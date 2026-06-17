@@ -6,7 +6,7 @@ import { cn } from "~/lib/utils";
 import { TooltipProvider } from "~/components/ui/tooltip";
 import { ThemeProvider } from "~/components/theme-provider";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -23,17 +23,19 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={cn(geist.variable, "font-sans", inter.variable)} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={cn(geist.variable, "font-sans", inter.variable)}
+      suppressHydrationWarning
+    >
       <body>
         <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-          <TooltipProvider>
-            {children}
-          </TooltipProvider>
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
       </body>
     </html>

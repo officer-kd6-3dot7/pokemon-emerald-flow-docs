@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
 import {
   Sidebar,
@@ -14,149 +14,175 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   SidebarRail,
-} from "~/components/ui/sidebar"
-import { GalleryVerticalEndIcon } from "lucide-react"
+} from "~/components/ui/sidebar";
+import Image from "next/image";
 
 // This is sample data.
 const data = {
   navMain: [
     {
-      title: "Getting Started",
+      title: "Introduction",
       url: "#",
       items: [
         {
-          title: "Installation",
+          title: "Welcome",
           url: "#",
         },
         {
-          title: "Project Structure",
+          title: "Goals",
           url: "#",
         },
       ],
     },
     {
-      title: "Build Your Application",
+      title: "Installation",
       url: "#",
       items: [
         {
-          title: "Routing",
+          title: "Rom Patcher JS",
           url: "#",
         },
         {
-          title: "Data Fetching",
+          title: "Hack Dex",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Features",
+      url: "#",
+      items: [
+        {
+          title: "Permanent Repel",
+          url: "#",
+        },
+        {
+          title: "Running",
           url: "#",
           isActive: true,
         },
         {
-          title: "Rendering",
+          title: "Level Cap",
           url: "#",
         },
         {
-          title: "Caching",
+          title: "Better Summary",
           url: "#",
         },
         {
-          title: "Styling",
+          title: "Physical-Special split",
           url: "#",
         },
         {
-          title: "Optimizing",
+          title: "Pocket Tutor",
           url: "#",
         },
         {
-          title: "Configuring",
+          title: "Better Evolutions",
           url: "#",
         },
         {
-          title: "Testing",
+          title: "Adopt Eggs",
           url: "#",
         },
         {
-          title: "Authentication",
+          title: "Pocket PC",
           url: "#",
         },
         {
-          title: "Deploying",
+          title: "Pocket Heal",
           url: "#",
         },
         {
-          title: "Upgrading",
+          title: "Forget HMs",
           url: "#",
         },
         {
-          title: "Examples",
+          title: "Infinite TMs",
+          url: "#",
+        },
+        {
+          title: "Pocket Mart",
+          url: "#",
+        },
+        {
+          title: "1$ Items",
+          url: "#",
+        },
+        {
+          title: "Pocket Bikes",
+          url: "#",
+        },
+        {
+          title: "Auto Blend",
+          url: "#",
+        },
+        {
+          title: "Custom Blend",
+          url: "#",
+        },
+        {
+          title: "Badge Boost",
+          url: "#",
+        },
+        {
+          title: "EV Training",
+          url: "#",
+        },
+        {
+          title: "Catch Rate",
+          url: "#",
+        },
+        {
+          title: "Fast Eggs",
+          url: "#",
+        },
+        {
+          title: "Instant Fishing",
+          url: "#",
+        },
+        {
+          title: "Always Feebas",
+          url: "#",
+        },
+        {
+          title: "Better Safari",
+          url: "#",
+        },
+        {
+          title: "No Fleeing Mons",
+          url: "#",
+        },
+        {
+          title: "Instant Text",
+          url: "#",
+        },
+        {
+          title: "Music",
           url: "#",
         },
       ],
     },
     {
-      title: "API Reference",
+      title: "Credits",
       url: "#",
       items: [
         {
-          title: "Components",
+          title: "pret/pokeemrald",
           url: "#",
         },
         {
-          title: "File Conventions",
+          title: "Code",
           url: "#",
         },
         {
-          title: "Functions",
-          url: "#",
-        },
-        {
-          title: "next.config.js Options",
-          url: "#",
-        },
-        {
-          title: "CLI",
-          url: "#",
-        },
-        {
-          title: "Edge Runtime",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Architecture",
-      url: "#",
-      items: [
-        {
-          title: "Accessibility",
-          url: "#",
-        },
-        {
-          title: "Fast Refresh",
-          url: "#",
-        },
-        {
-          title: "Next.js Compiler",
-          url: "#",
-        },
-        {
-          title: "Supported Browsers",
-          url: "#",
-        },
-        {
-          title: "Turbopack",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Community",
-      url: "#",
-      items: [
-        {
-          title: "Contribution Guide",
+          title: "Ideas",
           url: "#",
         },
       ],
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -166,12 +192,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <a href="#">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                  <GalleryVerticalEndIcon className="size-4" />
+                <div className="text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg border-2">
+                  <Image
+                    className="size-8"
+                    src="/logo.png"
+                    alt="Logo"
+                    width={32}
+                    height={32}
+                  />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-medium">Documentation</span>
-                  <span className="">v1.0.0</span>
+                  <span className="font-medium">Pokemon Emerald Flow</span>
+                  <span className="">v1.0.0-beta</span>
                 </div>
               </a>
             </SidebarMenuButton>
@@ -206,5 +238,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }
