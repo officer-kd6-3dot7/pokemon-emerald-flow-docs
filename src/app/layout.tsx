@@ -49,7 +49,10 @@ export default function RootLayout({
                 <AppSidebar variant="floating" />
                 <SidebarInset>
                   <header className="sticky top-0 z-10 flex h-16 items-center px-4">
-                    <SidebarTrigger variant="outline" />
+                    <SidebarTrigger
+                      variant="outline"
+                      className="dark:bg-sidebar/95"
+                    />
                     <div className="ml-auto">
                       <ModeToggle />
                     </div>
