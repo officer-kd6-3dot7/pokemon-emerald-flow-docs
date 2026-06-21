@@ -1,53 +1,16 @@
-/* eslint-disable @typescript-eslint/consistent-indexed-object-style */
 /* eslint-disable @typescript-eslint/no-empty-object-type */
-const separatorIn = " " as const;
-const separatorOut = "-" as const;
+/* eslint-disable @typescript-eslint/consistent-indexed-object-style */
 
+import { featureTitles } from "./feature-list";
+import type { KebabCase, KebabCaseUrl, Prettify } from "./types";
+import { getKebabCase, getUrl } from "./utils";
 const sections = [
   ["Overview"],
   ["Setup", ["Rom Patcher JS", "Hack Dex"]],
-  [
-    "Features",
-    [
-      "Permanent Repel",
-      "Running",
-      "Level Cap",
-      "No HM Slave",
-      "Better Summary",
-      "Physical-Special split",
-      "Pocket Tutor",
-      "Better Evolutions",
-      "Adopt Eggs",
-      "Pocket PC",
-      "Pocket Heal",
-      "Forget HMs",
-      "Infinite TMs",
-      "Pocket Mart",
-      "1$ Items",
-      "Pocket Bikes",
-      "Auto Blend",
-      "Custom Blend",
-      "Badge Boost",
-      "EV Training",
-      "Catch Rate",
-      "Fast Eggs",
-      "Instant Fishing",
-      "Always Feebas",
-      "Better Safari",
-      "No Fleeing Mons",
-      "Instant Text",
-      "Music",
-    ],
-  ],
+  ["Features", featureTitles],
   ["Credits"],
   ["Plans"],
 ] as const satisfies Sections;
-
-const getKebabCase = <T extends string>(str: T) =>
-  str.toLowerCase().replaceAll(separatorIn, separatorOut) as KebabCase<T>;
-
-const getUrl = <T extends string>(str: T): KebabCaseUrl<T> =>
-  `/${getKebabCase(str)}`;
 
 const getMenuItems = <T extends Sections>(sections: T) =>
   sections.map(([section, subSections]) => ({
@@ -84,24 +47,9 @@ export const menuItems = getMenuItems(sections);
 
 export const pages = getPages(sections);
 
-type Prettify<T> = {
-  [k in keyof T]: T[k];
-} & {};
-
 type Section = [string] | [string, string[]];
 
 type Sections = Section[];
-
-type KebabCase<
-  T extends string,
-  U extends string = "",
-> = T extends `${infer R extends string}${infer Rest}`
-  ? R extends typeof separatorIn
-    ? KebabCase<Rest, `${U}${typeof separatorOut}`>
-    : KebabCase<Rest, `${U}${Lowercase<R>}`>
-  : U;
-
-type KebabCaseUrl<T extends string> = `/${KebabCase<T>}`;
 
 type MenuItemContent<T extends string = string, U extends string = ""> = {
   title: T;
