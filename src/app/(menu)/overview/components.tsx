@@ -6,7 +6,11 @@ import type { PropsWithChildren } from "react";
 export const Title = () => <TitleMdx title={pages.overview.title} />;
 
 export const Hero = (props: PropsWithChildren) => (
-  <PageHero src="/birch.webp" alt="Professor Birch introduction screen sprite">
+  <PageHero
+    src="/birch.webp"
+    alt="Professor Birch introduction screen sprite"
+    blobBgColor="bg-amber-500"
+  >
     {props.children}
   </PageHero>
 );
