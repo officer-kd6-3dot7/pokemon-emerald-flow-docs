@@ -3,7 +3,6 @@ import {
   Lightbulb,
   MessageSquareWarning,
   OctagonAlert,
-  TriangleAlert,
 } from "lucide-react";
 import type { PropsWithChildren } from "react";
 
@@ -12,11 +11,6 @@ import { cn } from "~/lib/utils";
 
 const defaultVariant = "note" as const satisfies keyof AlertToColor;
 
-type Properties = {
-  background: "bg";
-  text: "text";
-};
-
 type AlertToColor = {
   note: "blue";
   tip: "green";
@@ -24,20 +18,14 @@ type AlertToColor = {
   warning: "yellow";
   caution: "red";
 };
-
-type Variants<T extends keyof Properties> = {
-  [k in keyof AlertToColor]: `${Properties[T]}-${AlertToColor[k]}-800`;
-};
-
-const backgroundVariants = cva("pl-1 w-full mt-8", {
+const backgroundVariants = cva("border w-full mt-8 rounded-md", {
   variants: {
     variant: {
-      caution: "bg-red-800",
-      important: "bg-purple-800",
-      note: "bg-blue-800",
-      tip: "bg-green-800",
-      warning: "bg-yellow-800",
-    } satisfies Variants<"background">,
+      caution: "bg-red-800 border-red-600",
+      important: "bg-purple-800 border-purple-600",
+      note: "bg-yellow-800 border-yellow-600",
+      tip: "bg-green-800 border-green-600",
+    },
   },
   defaultVariants: {
     variant: defaultVariant,
@@ -49,12 +37,11 @@ const textVariant = cva(
   {
     variants: {
       variant: {
-        caution: "text-red-800",
-        important: "text-purple-800",
-        note: "text-blue-800",
-        tip: "text-green-800",
-        warning: "text-yellow-800",
-      } satisfies Variants<"text">,
+        caution: "text-red-600",
+        important: "text-purple-600",
+        note: "text-yellow-600",
+        tip: "text-green-600",
+      },
     },
     defaultVariants: {
       variant: defaultVariant,
@@ -72,8 +59,6 @@ const VariantIcon = ({ variant }: Props) => {
       return <MessageSquareWarning />;
     case "caution":
       return <OctagonAlert />;
-    case "warning":
-      return <TriangleAlert />;
     case "tip":
       return <Lightbulb />;
     default:
@@ -89,7 +74,7 @@ export const Alert = ({
 }: PropsWithChildren<Props>) => {
   return (
     <div className={cn(backgroundVariants({ variant, className }))}>
-      <div className="bg-background/80 flex flex-1 flex-col p-4 [&>p]:mt-2!">
+      <div className="bg-background/90 flex flex-1 flex-col rounded-md p-4 [&>p]:mt-2!">
         <div className={cn(textVariant({ variant }))}>
           <VariantIcon variant={variant} />
           {variant}
@@ -114,8 +99,4 @@ export const Note = ({ children }: PropsWithChildren) => (
 
 export const Tip = ({ children }: PropsWithChildren) => (
   <Alert variant="tip">{children}</Alert>
-);
-
-export const Warning = ({ children }: PropsWithChildren) => (
-  <Alert variant="warning">{children}</Alert>
 );

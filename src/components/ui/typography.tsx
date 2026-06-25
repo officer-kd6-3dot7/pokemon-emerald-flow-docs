@@ -34,7 +34,7 @@ export function H3(props: PropsWithChildren<ComponentPropsWithoutRef<"h3">>) {
     <h3
       {...props}
       className={cn(
-        "scroll-m-20 text-2xl font-semibold tracking-tight",
+        "mt-4 w-full scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight",
         props.className,
       )}
     >
@@ -48,7 +48,7 @@ export function H4(props: PropsWithChildren<ComponentPropsWithoutRef<"h4">>) {
     <h4
       {...props}
       className={cn(
-        "scroll-m-20 text-xl font-semibold tracking-tight",
+        "mt-4 w-full scroll-m-20 border-b pb-2 text-xl font-semibold tracking-tight",
         props.className,
       )}
     >

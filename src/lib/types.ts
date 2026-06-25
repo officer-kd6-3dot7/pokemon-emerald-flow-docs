@@ -18,3 +18,27 @@ export type KebabCase<
   : U;
 
 export type KebabCaseUrl<T extends string> = `/${KebabCase<T>}`;
+
+export type TailwindColor =
+  | "amber"
+  | "blue"
+  | "cyan"
+  | "emerald"
+  | "fuchsia"
+  | "gray"
+  | "green"
+  | "indigo"
+  | "lime"
+  | "neutral"
+  | "orange"
+  | "pink"
+  | "purple"
+  | "red"
+  | "rose"
+  | "sky"
+  | "slate"
+  | "stone"
+  | "teal"
+  | "violet"
+  | "yellow"
+  | "zinc";

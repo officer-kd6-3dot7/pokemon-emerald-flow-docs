@@ -9,7 +9,7 @@ import {
   List,
   P,
 } from "~/components/ui/typography";
-import { Caution, Important, Note, Tip, Warning } from "~/components/alerts";
+import { Caution, Important, Note, Tip } from "~/components/alerts";
 
 // This file allows you to provide custom React components
 // to be used in MDX files. You can import and use any
@@ -30,7 +30,6 @@ const components = {
   Important,
   Note,
   Tip,
-  Warning,
 } satisfies MDXComponents;
 
 declare global {

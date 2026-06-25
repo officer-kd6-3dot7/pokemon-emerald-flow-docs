@@ -1,28 +1,5 @@
+import type { TailwindColor } from "~/lib/types";
 import { cn } from "~/lib/utils";
-
-type Color =
-  | "amber"
-  | "blue"
-  | "cyan"
-  | "emerald"
-  | "fuchsia"
-  | "gray"
-  | "green"
-  | "indigo"
-  | "lime"
-  | "neutral"
-  | "orange"
-  | "pink"
-  | "purple"
-  | "red"
-  | "rose"
-  | "sky"
-  | "slate"
-  | "stone"
-  | "teal"
-  | "violet"
-  | "yellow"
-  | "zinc";
 
 export function HeroBackground({
   blobBgColor = "bg-green-500",
@@ -30,7 +7,7 @@ export function HeroBackground({
   blobTranslateY = "translate-y-[calc(-50%-0px)]",
   blobSize = `size-[180px]`,
 }: {
-  blobBgColor?: `bg-${Color}-500`;
+  blobBgColor?: `bg-${TailwindColor}-500`;
   blobTranslateX?: `translate-x-[calc(-50%-${number}px)]`;
   blobTranslateY?: `translate-y-[calc(-50%-${number}px)]`;
   blobSize?: `size-[${number}px]`;
