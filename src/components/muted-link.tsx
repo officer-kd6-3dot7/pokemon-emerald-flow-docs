@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Muted } from "./ui/typography";
 import type { ComponentProps, PropsWithChildren } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "~/lib/utils";
@@ -23,18 +22,18 @@ export function MutedLink({
   link,
 }: PropsWithChildren<{
   link: Omit<ComponentProps<typeof Link>, "children">;
-  muted?: Omit<ComponentProps<typeof Muted>, "children"> &
-    VariantProps<typeof mutedVariants>;
+  muted?: { className?: string } & VariantProps<typeof mutedVariants>;
 }>) {
   return (
     <Link {...link}>
-      <Muted
+      <p
         className={cn(
+          "text-muted-foreground text-sm",
           mutedVariants({ className: muted?.className, size: muted?.size }),
         )}
       >
         {children}
-      </Muted>
+      </p>
     </Link>
   );
 }

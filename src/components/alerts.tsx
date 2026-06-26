@@ -74,8 +74,8 @@ export const Alert = ({
 }: PropsWithChildren<Props>) => {
   return (
     <div className={cn(backgroundVariants({ variant, className }))}>
-      <div className="bg-background/90 flex flex-1 flex-col rounded-md p-4 [&>p]:mt-2!">
-        <div className={cn(textVariant({ variant }))}>
+      <div className="bg-background/90 rounded-md p-4">
+        <div className={cn("pb-2", textVariant({ variant }))}>
           <VariantIcon variant={variant} />
           {variant}
         </div>
@@ -84,19 +84,3 @@ export const Alert = ({
     </div>
   );
 };
-
-export const Caution = ({ children }: PropsWithChildren) => (
-  <Alert variant="caution">{children}</Alert>
-);
-
-export const Important = ({ children }: PropsWithChildren) => (
-  <Alert variant="important">{children}</Alert>
-);
-
-export const Note = ({ children }: PropsWithChildren) => (
-  <Alert variant="note">{children}</Alert>
-);
-
-export const Tip = ({ children }: PropsWithChildren) => (
-  <Alert variant="tip">{children}</Alert>
-);
