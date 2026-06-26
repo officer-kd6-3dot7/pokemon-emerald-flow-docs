@@ -7,7 +7,7 @@ export function Md(props: Omit<ComponentProps<typeof Markdown>, "components">) {
     <Markdown
       {...props}
       components={{
-        h1: ({ children, ...rest }) => (
+        h1: ({ children, node: _, ...rest }) => (
           <h1
             className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance"
             {...rest}
@@ -15,15 +15,15 @@ export function Md(props: Omit<ComponentProps<typeof Markdown>, "components">) {
             {children}
           </h1>
         ),
-        h2: ({ children, ...rest }) => (
+        h2: ({ children, node: _, ...rest }) => (
           <h2
-            className="w-full scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0"
+            className="w-full scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first-of-type:mb-4"
             {...rest}
           >
             {children}
           </h2>
         ),
-        h3: ({ children, ...rest }) => (
+        h3: ({ children, node: _, ...rest }) => (
           <h3
             className="mt-4 w-full scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight"
             {...rest}
@@ -31,7 +31,7 @@ export function Md(props: Omit<ComponentProps<typeof Markdown>, "components">) {
             {children}
           </h3>
         ),
-        h4: ({ children, ...rest }) => (
+        h4: ({ children, node: _, ...rest }) => (
           <h4
             className="mt-4 w-full scroll-m-20 border-b pb-2 text-xl font-semibold tracking-tight"
             {...rest}
@@ -39,17 +39,14 @@ export function Md(props: Omit<ComponentProps<typeof Markdown>, "components">) {
             {children}
           </h4>
         ),
-        p: ({ children, ...rest }) => (
-          <p
-            {...rest}
-            className="leading-7 text-pretty hyphens-auto not-first:mt-6"
-          >
+        p: ({ children, node: _, ...rest }) => (
+          <p {...rest} className="leading-7 text-pretty hyphens-auto">
             {children}
           </p>
         ),
-        ul: ({ children, ...rest }) => (
+        ul: ({ children, node: _, ...rest }) => (
           <ul
-            className="ml-4 flex flex-1 list-disc flex-col [&>li]:mt-2"
+            className="ml-4 flex list-disc flex-col [&>li]:not-last:pb-4"
             {...rest}
           >
             {children}

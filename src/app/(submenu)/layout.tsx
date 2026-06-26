@@ -3,7 +3,7 @@ import { PageWrapper } from "~/components/page-wrapper";
 
 export default function Layout(props: PropsWithChildren) {
   return (
-    <PageWrapper className="mt-2 flex flex-1 flex-col items-start gap-2 lg:mt-10 lg:min-h-[calc(100dvh-12rem)]">
+    <PageWrapper className="md:mt-10 md:min-h-[calc(100dvh-12rem)] [&>a:first-child]:mb-2">
       {props.children}
     </PageWrapper>
   );

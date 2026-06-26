@@ -12,34 +12,38 @@ import {
 import { features } from "~/lib/feature-list";
 import { cn, getKebabCase } from "~/lib/utils";
 import { Alert } from "~/components/alerts";
+import { Md } from "~/components/markdown";
 
 export default function Page() {
-  return (
-    <>
-      <h2>{pages.features.title}</h2>
-      <p>
-        <strong>Pokemon Emerald Flow</strong> includes a variety of optional
-        enhancement features designed to reduce unnecessary friction while
-        preserving the original Emerald experience.
-      </p>
-      <p>
-        When starting a new game, all options are initialized to their default
-        values. These defaults are intended to provide a clean slate start
-        similar to that of the original <em>Pokémon Emerald</em>.
-      </p>
-      <p>
-        Below is a list of feature with their titles (with links), respective
-        options and default setting (marked as ✅). Every feature has its own
-        dedicated page with detailed explanations, examples, and
-        recommendations.
-      </p>
-      <Alert>
-        Default settings are applied automatically the first time Pokemon
-        Emerald Flow is launched. This initialization only happens once.
-      </Alert>
-      <FeaturesTable />
-    </>
-  );
+return (
+<>
+<Md>
+{
+`
+## ${pages.features.title}
+
+**Pokemon Emerald Flow** includes a variety of optional
+enhancement features designed to reduce unnecessary friction while
+preserving the original Emerald experience.
+
+When starting a new game, all options are initialized to their default
+values. These defaults are intended to provide a clean slate start
+similar to that of the original _Pokémon Emerald_.
+
+Below is a list of feature with their titles (with links), respective
+options and default setting (marked as ✅). Every feature has its own
+dedicated page with detailed explanations, examples, and
+recommendations.
+`
+}
+</Md>
+<Alert>
+Default settings are applied automatically the first time Pokemon
+Emerald Flow is launched. This initialization only happens once.
+</Alert>
+<FeaturesTable />
+</>
+);
 }
 
 function Option({
@@ -70,7 +74,7 @@ function Option({
 
 function FeaturesTable() {
   return (
-    <Table className="mt-6 table-fixed">
+    <Table className="table-fixed">
       <TableHeader>
         <TableRow>
           <TableHead className="border-r">Feature</TableHead>

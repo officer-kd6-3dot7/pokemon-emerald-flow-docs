@@ -7,14 +7,14 @@ export function PageWrapper({
   ...props
 }: PropsWithChildren<ComponentPropsWithoutRef<"section">>) {
   return (
-    <section
+    <main
       {...props}
       className={cn(
-        "mx-auto mb-16 min-h-[calc(100dvh-8rem)] w-full max-w-2xl px-8",
+        "mx-auto mb-18 flex w-full max-w-2xl flex-col items-start px-8 *:mb-4",
         props.className,
       )}
     >
       {children}
-    </section>
+    </main>
   );
 }

@@ -18,7 +18,7 @@ type AlertToColor = {
   warning: "yellow";
   caution: "red";
 };
-const backgroundVariants = cva("border w-full mt-8 rounded-md", {
+const backgroundVariants = cva("border w-full rounded-md", {
   variants: {
     variant: {
       caution: "bg-red-800 border-red-600",
