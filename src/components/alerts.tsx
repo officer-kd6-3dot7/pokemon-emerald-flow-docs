@@ -4,10 +4,11 @@ import {
   MessageSquareWarning,
   OctagonAlert,
 } from "lucide-react";
-import type { PropsWithChildren } from "react";
+import type { ComponentProps, PropsWithChildren } from "react";
 
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "~/lib/utils";
+import { Md } from "./markdown";
 
 const defaultVariant = "note" as const satisfies keyof AlertToColor;
 
@@ -82,5 +83,16 @@ export const Alert = ({
         {children}
       </div>
     </div>
+  );
+};
+
+export const AlertMd = ({
+  children,
+  ...props
+}: Omit<ComponentProps<typeof Alert>, "children"> & { children: string }) => {
+  return (
+    <Alert {...props}>
+      <Md>{children}</Md>
+    </Alert>
   );
 };

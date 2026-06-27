@@ -11,11 +11,12 @@ import {
 } from "~/components/ui/table";
 import { features } from "~/lib/feature-list";
 import { cn, getKebabCase } from "~/lib/utils";
-import { Alert } from "~/components/alerts";
+import { AlertMd } from "~/components/alerts";
 import { Md } from "~/components/markdown";
 
 export default function Page() {
-return (
+  // prettier-ignore
+  return (
 <>
 <Md>
 {
@@ -37,10 +38,14 @@ recommendations.
 `
 }
 </Md>
-<Alert>
+<AlertMd>
+{
+`
 Default settings are applied automatically the first time Pokemon
 Emerald Flow is launched. This initialization only happens once.
-</Alert>
+`
+}
+</AlertMd>
 <FeaturesTable />
 </>
 );

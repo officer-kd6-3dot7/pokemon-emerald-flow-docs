@@ -4,8 +4,9 @@ import type { ComponentProps, PropsWithChildren } from "react";
 import type { TailwindColor } from "~/lib/types";
 
 import { cn } from "~/lib/utils";
+import { Md } from "./markdown";
 
-export const FeatureNoteItem = ({
+export const Note = ({
   children,
   alt,
   src,
@@ -27,10 +28,21 @@ export const FeatureNoteItem = ({
         // and preserve its aspect ratio
         className={cn("size-12", className)}
       />
-      <div className="[&>strong]:text-primary flex flex-1 flex-col text-sm">
+      <div className="flex flex-1 flex-col text-sm [&_strong]:text-lg">
         {children}
       </div>
     </div>
+  );
+};
+
+export const NoteMd = ({
+  children,
+  ...props
+}: Omit<ComponentProps<typeof Note>, "children"> & { children: string }) => {
+  return (
+    <Note {...props}>
+      <Md>{children}</Md>
+    </Note>
   );
 };
 
@@ -64,4 +76,5 @@ export const FeatureNotes = <T extends TailwindColor>({
     </div>
   );
 };
-FeatureNotes.Note = FeatureNoteItem;
+FeatureNotes.Note = Note;
+FeatureNotes.NoteMd = NoteMd;

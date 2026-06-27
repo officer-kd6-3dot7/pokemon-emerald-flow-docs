@@ -4,7 +4,8 @@ import { Md } from "~/components/markdown";
 import { pages } from "~/lib/menu-items";
 
 export default function Page() {
-return (
+  // prettier-ignore
+  return (
 <>
 <Md>
 {
