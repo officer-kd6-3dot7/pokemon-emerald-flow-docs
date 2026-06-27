@@ -1,34 +1,72 @@
 import { HeroMd } from "~/components/hero";
+import { FeatureNotes } from "~/components/feature-notes";
 import { Md } from "~/components/markdown";
-import { pages } from "~/lib/menu-items";
+import { Options } from "~/components/options";
+import { features } from "~/lib/feature-list";
 
 export default function Page() {
+  const feature = features.running;
   // prettier-ignore
   return (
 <>
 <Md>
 {
 `
-## ${pages.features.running.title}
+## ${feature.title}
 `
 }
 </Md>
-<HeroMd
-src="/birch.webp"
-alt="Professor Birch introduction screen sprite"
-blobBgColor="bg-amber-500"
+<HeroMd 
+src="/repel.webp" 
+alt="Repel item sprite"
 >
 {
 `
-**Pokemon Emerald Flow** is an enhancement project built
-for and on top of _Pokémon Emerald_. Its goal is simple:
-respect player choices, reduce friction, modernize when necessary, and
-retain the core experience.
+**Permanent Repel** lets you toggle Repel effects on or
+off without repeatedly using any Repel items.
 
-Just classic Emerald, but you set the flow of the game.
+It behaves just like a standard Repel, but stays active until you
+choose otherwise.
 `
 }
 </HeroMd>
+<FeatureNotes
+bgColor="bg-emerald-800"
+borderColor="border-emerald-600"
+textColor="text-emerald-600"
+>
+<FeatureNotes.NoteMd src="/pokeball.webp" alt="Pokeball item sprite">
+{
+`
+**Encounters** 
+
+Wild Pokémon with a higher level than your
+lead Pokémon can still appear.
+`
+}
+</FeatureNotes.NoteMd>
+</FeatureNotes>
+<Options>
+{
+feature.options.map((option, i)=>
+(
+<Options.OptionMd
+key={i}
+src="/repel.webp" 
+alt="Repel item sprite"
+isDefault={option.title == feature.defaultOption}
+>
+{
+`
+**${option.title}**
+
+${option.description}
+`
+}
+</Options.OptionMd>)
+)
+}
+</Options>
 </>
 );
 }

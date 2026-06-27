@@ -9,7 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "~/components/ui/table";
-import { features } from "~/lib/feature-list";
+import { featureList } from "~/lib/feature-list";
 import { cn, getKebabCase } from "~/lib/utils";
 import { AlertMd } from "~/components/alerts";
 import { Md } from "~/components/markdown";
@@ -56,7 +56,7 @@ function Option({
   index,
   className,
 }: {
-  option: (typeof features)[number][1];
+  option: (typeof featureList)[number][1];
   index: number;
   className?: string;
 }) {
@@ -64,17 +64,19 @@ function Option({
 
   if (!value) return <TableCell className={className}>-</TableCell>;
 
-  if (value === option.defaultOption)
+  const title = value[0];
+
+  if (title === option.defaultOption)
     return (
       <TableCell
         className={cn(className, "flex flex-1 flex-row justify-between")}
       >
-        <span>{value}</span>
+        <span>{title}</span>
         <span>✅</span>
       </TableCell>
     );
 
-  return <TableCell className={className}>{value}</TableCell>;
+  return <TableCell className={className}>{title}</TableCell>;
 }
 
 function FeaturesTable() {
@@ -93,7 +95,7 @@ function FeaturesTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {features.map(([title, option], i) => (
+        {featureList.map(([title, option], i) => (
           <TableRow key={`feature_${i}`}>
             <TableCell className="border-r">
               <MutedLink

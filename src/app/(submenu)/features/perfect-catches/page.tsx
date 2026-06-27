@@ -5,7 +5,7 @@ import { Options } from "~/components/options";
 import { features } from "~/lib/feature-list";
 
 export default function Page() {
-  const feature = features["no-fleeing-mons"];
+  const feature = features["perfect-catches"];
   // prettier-ignore
   return (
 <>

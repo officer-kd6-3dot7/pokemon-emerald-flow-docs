@@ -4,10 +4,6 @@ export type Prettify<T> = {
   [k in keyof T]: T[k];
 } & {};
 
-export type Options<T extends string[] = string[]> = {
-  options: T;
-  defaultOption: T[number];
-};
 export type KebabCase<
   T extends string,
   U extends string = "",

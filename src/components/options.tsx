@@ -16,11 +16,9 @@ export const Option = ({
   children,
   alt,
   src,
-  status = "soon",
   isDefault = false,
 }: PropsWithChildren<
   Pick<ComponentProps<typeof Image>, "src" | "alt" | "className"> & {
-    status?: "ban" | "soon";
     isDefault?: boolean;
   }
 >) => {
@@ -45,11 +43,11 @@ export const Option = ({
               width={48}
               height={48}
             />
-            {status == "ban" && (
+            {isDefault && (
               <Ban className="absolute scale-250 opacity-50" strokeWidth={1} />
             )}
           </div>
-          <>{status == "ban" ? "No preview" : "Coming soon!"}</>
+          <>{!isDefault ? "Coming soon!" : "No preview"}</>
         </div>
       </TableCell>
     </TableRow>
@@ -78,7 +76,7 @@ export const Options = (props: PropsWithChildren) => {
           <TableHead className="w-[20%] border-r text-center md:w-[15%]">
             Default
           </TableHead>
-          <TableHead className="w-[40%] text-center">Preview</TableHead>
+          <TableHead className="w-[40%] text-center">Gameplay</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>{props.children}</TableBody>

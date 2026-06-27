@@ -1,17 +1,18 @@
 import { HeroMd } from "~/components/hero";
-import { pages } from "~/lib/menu-items";
 import { FeatureNotes } from "~/components/feature-notes";
 import { Md } from "~/components/markdown";
 import { Options } from "~/components/options";
+import { features } from "~/lib/feature-list";
 
 export default function Page() {
+  const feature = features["permanent-repel"];
   // prettier-ignore
   return (
 <>
 <Md>
 {
 `
-## ${pages.features["permanent-repel"].title}
+## ${feature.title}
 `
 }
 </Md>
@@ -46,33 +47,25 @@ lead Pokémon can still appear.
 </FeatureNotes.NoteMd>
 </FeatureNotes>
 <Options>
+{
+feature.options.map((option, i)=>
+(
 <Options.OptionMd
+key={i}
 src="/repel.webp" 
 alt="Repel item sprite"
-status="soon"
+isDefault={option.title == feature.defaultOption}
 >
 {
 `
-**On**
+**${option.title}**
 
-Repel is always active.
+${option.description}
 `
 }
-</Options.OptionMd>
-<Options.OptionMd
-src="/repel.webp" 
-alt="Repel item sprite"
-status="ban"
-isDefault
->
-{
-`
-**Off**
-
-Vanilla gameplay.
-`
+</Options.OptionMd>)
+)
 }
-</Options.OptionMd>
 </Options>
 </>
 );

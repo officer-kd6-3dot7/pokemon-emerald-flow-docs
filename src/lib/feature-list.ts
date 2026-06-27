@@ -1,84 +1,405 @@
-import type { Options, Prettify } from "./types";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/consistent-indexed-object-style */
+/* eslint-disable @typescript-eslint/no-empty-object-type */
+import type { KebabCase, Prettify } from "./types";
+import { getKebabCase } from "./utils";
 
-const getOptions = <T extends string[]>(options: Prettify<Options<T>>) =>
-  options;
+const VANILLA_GAMEPLAY = "Vanilla gameplay";
 
-const optionsOnOff = getOptions({
-  options: ["Off", "On"],
-  defaultOption: "Off",
-} as const);
+const getOptions = <T>(
+  options: T extends Options<infer _ extends Option[]>
+    ? T
+    : `type does not match {options: T, defaultOption: T[number][0]}`,
+) => {
+  if (typeof options === "string") throw new Error("Invalid object");
+  return options;
+};
 
-const optionsRunning = getOptions({
-  options: ["Off", "Indoor", "Perma"],
-  defaultOption: "Off",
-} as const);
+const activeText = <T extends string>(str: T) =>
+  `${str} is now active` as const;
+const startScreenText = <T extends string>(str: T) =>
+  `${str} is now available in the start screen` as const;
 
-const optionsBetterEvolution = getOptions({
-  options: ["Off", "Lvl.30", "Item"],
-  defaultOption: "Off",
-} as const);
+export const featureList = [
+  [
+    "Permanent Repel",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", activeText("Permanent repel")],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Running",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["Indoor", "Hold B to run including indoors"],
+        ["Perma", "No need to hold B to run"],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Level Cap",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", "Level caps applied till next gym badge"],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "No HM Slave",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", startScreenText("MOVES")],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Better Summary",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", activeText("Better Summary")],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Physical-Special Split",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", activeText("Physical-Special Split")],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Pocket Tutor",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", startScreenText("TUTOR")],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Better Evolutions",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["Lvl.30", "Pokemon evolve at Level 30"],
+        ["Item", "Pokemon evolve during level up with a held item"],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Adopt Eggs",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", "Daycare lady provides eggs for adoption"],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Pocket PC",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", startScreenText("PC")],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Pocket Heal",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", startScreenText("HEAL")],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Forget HMs",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", "HMs can now be forgotten"],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Infinite TMs",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", "TMs do not run out"],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Pocket Mart",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", startScreenText("MART")],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "1$ Items",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", "Items now cost 1$"],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Pocket Bikes",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", startScreenText("BIKES")],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Auto Blend",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", "Berry blending is now automatic and perfect"],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Custom Blend",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", "Choose berries for all NPCs from bag"],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Badge Boost",
+    getOptions({
+      options: [
+        ["Off", "Badge boosts are now turned off"],
+        ["On", VANILLA_GAMEPLAY],
+      ],
+      defaultOption: "On",
+    } as const),
+  ],
+  [
+    "EV Training",
+    getOptions({
+      options: [
+        ["Off", "Any EV gains are turned off"],
+        ["On", VANILLA_GAMEPLAY],
+        ["Vitamin", "Vitamins cap at 252EV, Berries at -1EV"],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Perfect Catches",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", "Pokemon do not escape from Pokeball"],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Fast Eggs",
+    getOptions({
+      options: [
+        ["1x", VANILLA_GAMEPLAY],
+        ["4x", "Eggs generate and hatch 4x faster"],
+        ["10x", "Eggs generate and hatch 10x faster"],
+      ],
+      defaultOption: "1x",
+    } as const),
+  ],
+  [
+    "Instant Fishing",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", "Dot and hook games are skipped"],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Always Feebas",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", "Fishing encounters on Route 119 are always Feebas"],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Better Safari",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", "Step and Safari ball counters are disabled"],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "No Fleeing Mons",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", "Safari and Roaming Pokemon do not flee"],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Instant Text",
+    getOptions({
+      options: [
+        ["Off", VANILLA_GAMEPLAY],
+        ["On", "Text prints instantly"],
+      ],
+      defaultOption: "Off",
+    } as const),
+  ],
+  [
+    "Music",
+    getOptions({
+      options: [
+        ["Off", "Background music stops playing"],
+        ["On", VANILLA_GAMEPLAY],
+      ],
+      defaultOption: "On",
+    } as const),
+  ],
+] as const satisfies FeatureList;
 
-const optionsEVTraining = getOptions({
-  options: ["Off", "On", "Vitamin"],
-  defaultOption: "On",
-} as const);
+const getFeatures = <T extends FeatureList>(sections: T) => {
+  return sections.reduce(
+    (acc, [section, { defaultOption, options }]) => {
+      const sectionName = getKebabCase(section);
+      acc[sectionName] = {
+        title: section,
+        options: options.map(([title, description]) => ({
+          title,
+          description,
+        })),
+        defaultOption,
+      };
+      options.forEach(([title, description]) => {
+        acc[sectionName]![getKebabCase(title)] = {
+          title,
+          description,
+        };
+      });
+      return acc;
+    },
+    {} as Record<string, any>,
+  ) as Features<T>;
+};
 
-const optionsCatchRate = getOptions({
-  options: ["Normal", "100%"],
-  defaultOption: "Normal",
-} as const);
+export const features = getFeatures(featureList);
 
-const optionsFastEggs = getOptions({
-  options: ["1x", "4x", "8x"],
-  defaultOption: "1x",
-} as const);
+export const featureTitles = featureList.map(
+  ([title]) => title,
+) as FeatureTitles;
 
-const optionsOnOff_On = getOptions({
-  ...optionsOnOff,
-  defaultOption: "On",
-} as const);
+type Option = [string, string];
 
-type FeaturesList = [string, Options][];
-
-export const features = [
-  ["Permanent Repel", optionsOnOff],
-  ["Running", optionsRunning],
-  ["Level Cap", optionsOnOff],
-  ["No HM Slave", optionsOnOff],
-  ["Better Summary", optionsOnOff],
-  ["Physical-Special Split", optionsOnOff],
-  ["Pocket Tutor", optionsOnOff],
-  ["Better Evolutions", optionsBetterEvolution],
-  ["Adopt Eggs", optionsOnOff],
-  ["Pocket PC", optionsOnOff],
-  ["Pocket Heal", optionsOnOff],
-  ["Forget HMs", optionsOnOff],
-  ["Infinite TMs", optionsOnOff],
-  ["Pocket Mart", optionsOnOff],
-  ["1$ Items", optionsOnOff],
-  ["Pocket Bikes", optionsOnOff],
-  ["Auto Blend", optionsOnOff],
-  ["Custom Blend", optionsOnOff],
-  ["Badge Boost", optionsOnOff_On],
-  ["EV Training", optionsEVTraining],
-  ["Catch Rate", optionsCatchRate],
-  ["Fast Eggs", optionsFastEggs],
-  ["Instant Fishing", optionsOnOff],
-  ["Always Feebas", optionsOnOff],
-  ["Better Safari", optionsOnOff],
-  ["No Fleeing Mons", optionsOnOff],
-  ["Instant Text", optionsOnOff],
-  ["Music", optionsOnOff_On],
-] as const satisfies FeaturesList;
+type Options<T extends Option[] = Option[]> = {
+  options: T;
+  defaultOption: NoInfer<T>[number][0];
+};
+type FeatureList = [string, Options][];
 
 type FeatureTitles<
-  T extends FeaturesList = typeof features,
+  T extends FeatureList = typeof featureList,
   U extends string[] = [],
 > = T extends [
-  infer R extends FeaturesList[number],
-  ...infer Rest extends FeaturesList,
+  infer R extends FeatureList[number],
+  ...infer Rest extends FeatureList,
 ]
   ? FeatureTitles<Rest, [...U, R[0]]>
   : U;
 
-export const featureTitles = features.map(([title]) => title) as FeatureTitles;
+type OptionObject<T extends Option = Option> = {
+  title: T[0];
+  description: T[1];
+};
+type AccumulateOptions<T extends Option[], U extends object = {}> = T extends [
+  infer R extends Option,
+  ...infer Rest extends Option[],
+]
+  ? AccumulateOptions<
+      Rest,
+      Prettify<
+        U & {
+          [key in `${KebabCase<R[0]>}`]: Prettify<OptionObject<R>>;
+        }
+      >
+    >
+  : U;
+
+type CleanOptions<
+  T extends Option[],
+  U extends OptionObject[] = [],
+> = T extends [infer R extends Option, ...infer Rest extends Option[]]
+  ? CleanOptions<Rest, [...U, Prettify<OptionObject<R>>]>
+  : U;
+
+type Features<
+  T extends FeatureList = typeof featureList,
+  U extends object = {},
+> = T extends [
+  infer R extends FeatureList[number],
+  ...infer Rest extends FeatureList,
+]
+  ? Features<
+      Rest,
+      Prettify<
+        U & {
+          [key in `${KebabCase<R[0]>}`]: Prettify<
+            {
+              title: R[0];
+              defaultOption: R[1]["defaultOption"];
+              options: CleanOptions<R[1]["options"]>;
+            } & AccumulateOptions<R[1]["options"]>
+          >;
+        }
+      >
+    >
+  : U;
