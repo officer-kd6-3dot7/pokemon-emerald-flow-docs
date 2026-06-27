@@ -7,6 +7,7 @@ import { features } from "~/lib/feature-list";
 export default function Page() {
   const feature = features.running;
   const img = "/running.webp";
+  const alt = "Brendan running sprite";
   // prettier-ignore
   return (
 <>
@@ -19,7 +20,7 @@ export default function Page() {
 </Md>
 <HeroMd 
 src={img}
-alt="Brendan running sprite"
+alt={alt}
 >
 {
 `
@@ -61,7 +62,7 @@ feature.options.map((option, i)=>
 <Options.OptionMd
 key={i}
 src={img}
-alt="Brendan running sprite"
+alt={alt}
 isDefault={option.title == feature.defaultOption}
 >
 {

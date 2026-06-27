@@ -18,7 +18,6 @@ export default function Page() {
 <HeroMd
 src="/setup.webp"
 alt="Brendan infront of Professor Birch's Bag Sprite"
-blobBgColor="bg-green-500"
 >
 {
 `

@@ -7,6 +7,7 @@ import { features } from "~/lib/feature-list";
 export default function Page() {
   const feature = features["1$-items"];
   const img = "/repel.webp";
+  const alt = "Repel item sprite";
   // prettier-ignore
   return (
 <>
@@ -19,7 +20,7 @@ export default function Page() {
 </Md>
 <HeroMd 
 src={img}
-alt="Repel item sprite"
+alt={alt}
 >
 {
 `
@@ -34,6 +35,7 @@ choose otherwise.
 <FeatureNotes
 bgColor="bg-emerald-800"
 borderColor="border-emerald-600"
+childBorderColor="[&>div]:not-first:border-emerald-600"
 textColor="text-emerald-600"
 >
 <FeatureNotes.NoteMd src="/pokeball.webp" alt="Pokeball item sprite">
@@ -54,7 +56,7 @@ feature.options.map((option, i)=>
 <Options.OptionMd
 key={i}
 src={img}
-alt="Repel item sprite"
+alt={alt}
 isDefault={option.title == feature.defaultOption}
 >
 {

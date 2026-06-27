@@ -13,15 +13,24 @@ import { featureList } from "~/lib/feature-list";
 import { cn, getKebabCase } from "~/lib/utils";
 import { AlertMd } from "~/components/alerts";
 import { Md } from "~/components/markdown";
+import { HeroMd } from "~/components/hero";
 
 export default function Page() {
   // prettier-ignore
   return (
-    <>
-      <Md>
-        {`
+<>
+<Md>
+{
+`
 ## ${pages.features.title}
-
+`}
+</Md>
+<HeroMd 
+src="/features-rayquaza.webp" 
+alt="Rayquaza sprite"
+>
+{
+`
 **Pokemon Emerald Flow** includes a variety of optional
 enhancement features designed to reduce unnecessary friction while
 preserving the original Emerald experience.
@@ -29,21 +38,29 @@ preserving the original Emerald experience.
 When starting a new game, all options are initialized to their default
 values. These defaults are intended to provide a clean slate start
 similar to that of the original _Pokémon Emerald_.
+`
+}
+</HeroMd>
+<Md>
+{
+`
+## ${pages.features.title}
 
 Below is a list of features with links to their documentation, 
 available options, and the default setting (marked with ✅). 
 Each feature has its own dedicated page with further explanations.
 `}
-      </Md>
-      <AlertMd>
-        {`
+</Md>
+<AlertMd>
+{
+`
 Default settings are applied automatically the first time Pokemon
 Emerald Flow is launched. This initialization only happens once.
 `}
-      </AlertMd>
-      <FeaturesTable />
-    </>
-  );
+</AlertMd>
+<FeaturesTable />
+</>
+);
 }
 
 function Option({

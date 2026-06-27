@@ -19,7 +19,7 @@ export function Hero({
       <div className="flex flex-1 flex-col self-center *:mb-4 md:pt-4">
         {children}
       </div>
-      <div className="relative">
+      <div className="relative flex items-center justify-center">
         <HeroBackground {...blob} />
         {/* eslint-disable-next-line jsx-a11y/alt-text */}
         <Image
@@ -61,7 +61,7 @@ function HeroBackground({
   return (
     <div
       className={cn(
-        "absolute top-1/2 left-1/2 size-1 -translate-x-1/2 -translate-y-1/2 scale-5000 rounded-full bg-green-500 opacity-60 blur-[1px] dark:opacity-20",
+        "absolute top-1/2 left-1/2 size-1 -translate-x-1/2 -translate-y-1/2 scale-5000 rounded-full bg-emerald-500 opacity-60 blur-[1px] dark:opacity-20",
         blobBgColor,
         blobTranslateX,
         blobTranslateY,
