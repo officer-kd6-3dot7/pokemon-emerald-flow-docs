@@ -51,21 +51,21 @@ function HeroBackground({
   blobBgColor,
   blobTranslateX,
   blobTranslateY,
-  blobSize,
+  blocScale,
 }: {
   blobBgColor?: `bg-${TailwindColor}-500`;
   blobTranslateX?: `translate-x-[calc(-50%-${number}px)]`;
   blobTranslateY?: `translate-y-[calc(-50%-${number}px)]`;
-  blobSize?: `size-[${number}px]`;
+  blocScale?: `scale-${number}000`;
 }) {
   return (
     <div
       className={cn(
-        "absolute top-1/2 left-1/2 size-50 translate-x-[calc(-50%-0px)] translate-y-[calc(-50%-0px)] rounded-full bg-green-500 opacity-60 blur-[48px] dark:opacity-20",
+        "absolute top-1/2 left-1/2 size-1 -translate-x-1/2 -translate-y-1/2 scale-5000 rounded-full bg-green-500 opacity-60 blur-[1px] dark:opacity-20",
         blobBgColor,
         blobTranslateX,
         blobTranslateY,
-        blobSize,
+        blocScale,
       )}
     />
   );

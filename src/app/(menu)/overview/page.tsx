@@ -17,7 +17,6 @@ export default function Page() {
 src="/birch.webp"
 alt="Professor Birch introduction screen sprite"
 blobBgColor="bg-amber-500"
-className="w-48 md:w-56"
 >
 {
 `

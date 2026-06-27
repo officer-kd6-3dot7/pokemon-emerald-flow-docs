@@ -14,7 +14,10 @@ export default function Page() {
 `
 }
 </Md>
-<HeroMd src="/repel.webp" alt="Repel item sprite" blobSize="size-[200px]">
+<HeroMd 
+src="/repel.webp" 
+alt="Repel item sprite"
+>
 {
 `
 **Permanent Repel** lets you toggle Repel effects on or
