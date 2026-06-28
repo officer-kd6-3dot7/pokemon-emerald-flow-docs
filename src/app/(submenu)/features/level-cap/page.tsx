@@ -3,11 +3,12 @@ import { FeatureNotes } from "~/components/feature-notes";
 import { Md } from "~/components/markdown";
 import { Options } from "~/components/options";
 import { features } from "~/lib/feature-list";
+import { Alert, AlertMd } from "~/components/alerts";
 
 export default function Page() {
   const feature = features["level-cap"];
-  const img = "/repel.webp";
-  const alt = "Repel item sprite";
+  const img = "/rare-candy.webp";
+  const alt = "Rare candy item sprite";
   // prettier-ignore
   return (
 <>
@@ -21,34 +22,62 @@ export default function Page() {
 <HeroMd 
 src={img}
 alt={alt}
+blobBgColor="bg-blue-500"
 >
 {
 `
-**Permanent Repel** lets you toggle Repel effects on or
-off without repeatedly using any Repel items.
+**Level Cap** lets you enforce a global level cap that applies to all 
+experience gains, including battles and Rare Candies.
 
-It behaves just like a standard Repel, but stays active until you
-choose otherwise.
+Train without accidentally overleveling and keep every major battle at its intended difficulty. 
 `
 }
 </HeroMd>
 <FeatureNotes
-bgColor="bg-emerald-800"
-borderColor="border-emerald-600"
-childBorderColor="[&>div]:not-first:border-emerald-600"
-textColor="text-emerald-600"
+bgColor="bg-blue-800"
+borderColor="border-blue-600"
+childBorderColor="[&>div]:not-first:border-blue-600"
+textColor="text-blue-600"
 >
+<FeatureNotes.NoteMd src="/gym-sign.webp" alt="Pokeball item sprite">
+{
+`
+**Cap progression** 
+
+The level cap automatically updates after each major battle to match the next Gym Leader,
+ Elite Four member, Champion, or Steven's ace.
+`
+}
+</FeatureNotes.NoteMd>
+<FeatureNotes.NoteMd src="/rare-candy.webp" alt="Pokeball item sprite">
+{
+`
+**Experience gains** 
+
+Only experience gains are capped.
+`
+}
+</FeatureNotes.NoteMd>
 <FeatureNotes.NoteMd src="/pokeball.webp" alt="Pokeball item sprite">
 {
 `
-**Encounters** 
+**Higher-level Pokemon** 
 
-Wild Pokémon with a higher level than your
-lead Pokémon can still appear.
+Pokémon above the current cap can still participate in battle.
 `
 }
 </FeatureNotes.NoteMd>
 </FeatureNotes>
+<AlertMd variant="tip" className="[&>a]:">
+{
+`
+Need the exact level caps? Check these references that provide a breakdown of the cap progression.
+
+- [Nuzlocke University](https://nuzlockeuniversity.ca/2022/01/18/hardcore-nuzlocke-level-caps-by-generation/#emerald)
+- [PokemonDB](https://pokemondb.net/emerald/gymleaders-elitefour)
+`
+}
+</AlertMd>
 <Options>
 {
 feature.options.map((option, i)=>

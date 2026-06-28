@@ -48,7 +48,7 @@ export const featureList = [
     getOptions({
       options: [
         ["Off", VANILLA_GAMEPLAY],
-        ["On", "Level caps applied till next gym badge"],
+        ["On", "Enforces a level cap until the next major battle."],
       ],
       defaultOption: "Off",
     } as const),

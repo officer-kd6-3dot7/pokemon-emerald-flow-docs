@@ -27,7 +27,7 @@ alt={alt}
 **Permanent Repel** lets you toggle Repel effects on or
 off without repeatedly using any Repel items.
 
-It behaves just like a standard Repel, but stays active until you
+This feature behaves just like a standard Repel, but stays active until you
 choose otherwise.
 `
 }

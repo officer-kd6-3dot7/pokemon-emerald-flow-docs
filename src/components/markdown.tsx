@@ -1,6 +1,7 @@
 import type { ComponentProps } from "react";
 import Markdown from "react-markdown";
 import Link from "next/link";
+import { cn } from "~/lib/utils";
 
 export function Md(props: Omit<ComponentProps<typeof Markdown>, "components">) {
   return (
@@ -25,7 +26,7 @@ export function Md(props: Omit<ComponentProps<typeof Markdown>, "components">) {
         ),
         h3: ({ children, node: _, ...rest }) => (
           <h3
-            className="mt-4 w-full scroll-m-20 pb-2 text-2xl font-semibold tracking-tight"
+            className="w-full scroll-m-20 border-b pb-1 text-2xl font-semibold tracking-tight"
             {...rest}
           >
             {children}
@@ -33,7 +34,7 @@ export function Md(props: Omit<ComponentProps<typeof Markdown>, "components">) {
         ),
         h4: ({ children, node: _, ...rest }) => (
           <h4
-            className="mt-4 w-full scroll-m-20 pb-2 text-xl font-semibold tracking-tight"
+            className="w-full scroll-m-20 text-xl font-semibold tracking-tight"
             {...rest}
           >
             {children}
@@ -53,8 +54,11 @@ export function Md(props: Omit<ComponentProps<typeof Markdown>, "components">) {
           </ul>
         ),
         a: ({ href, children }) => (
-          <Link href={href!}>
-            <p className="text-muted-foreground">{children}</p>
+          <Link
+            href={href!}
+            className="text-muted-foreground underline underline-offset-2"
+          >
+            {children}
           </Link>
         ),
       }}

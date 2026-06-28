@@ -10,7 +10,7 @@ export function ExternalLink({
     <MutedLink
       link={{
         href,
-        className: "mx-auto",
+        className: "mx-auto underline underline-offset-2",
         target: "_blank",
       }}
       muted={{

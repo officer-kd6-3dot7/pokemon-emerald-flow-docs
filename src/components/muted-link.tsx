@@ -28,7 +28,7 @@ export function MutedLink({
     <Link {...link}>
       <p
         className={cn(
-          "text-muted-foreground text-sm",
+          "text-muted-foreground text-sm underline underline-offset-2",
           mutedVariants({ className: muted?.className, size: muted?.size }),
         )}
       >
