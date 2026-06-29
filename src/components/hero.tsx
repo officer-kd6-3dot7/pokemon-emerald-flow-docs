@@ -6,10 +6,7 @@ import { Md } from "./markdown";
 
 export function Hero({
   children,
-  alt,
-  src,
-  className,
-  ...blob
+  ...props
 }: PropsWithChildren<
   Pick<ComponentProps<typeof Image>, "src" | "alt" | "className"> &
     ComponentProps<typeof HeroBackground>
@@ -19,18 +16,7 @@ export function Hero({
       <div className="flex flex-1 flex-col self-center md:pt-4 [&>p]:not-last:mb-4">
         {children}
       </div>
-      <div className="relative flex items-center justify-center">
-        <HeroBackground {...blob} />
-        <Image
-          src={src}
-          alt={alt}
-          width={180}
-          height={180}
-          className={cn("relative mx-auto md:mx-0", className)}
-          unoptimized
-          priority
-        />
-      </div>
+      <HeroImage {...props} />
     </section>
   );
 }
@@ -43,6 +29,29 @@ export function HeroMd({
     <Hero {...props}>
       <Md>{children}</Md>
     </Hero>
+  );
+}
+
+export function HeroImage({
+  alt,
+  src,
+  className,
+  ...blob
+}: Pick<ComponentProps<typeof Image>, "src" | "alt" | "className"> &
+  ComponentProps<typeof HeroBackground>) {
+  return (
+    <div className="relative flex items-center justify-center">
+      <HeroBackground {...blob} />
+      <Image
+        src={src}
+        alt={alt}
+        width={180}
+        height={180}
+        className={cn("relative mx-auto md:mx-0", className)}
+        unoptimized
+        priority
+      />
+    </div>
   );
 }
 

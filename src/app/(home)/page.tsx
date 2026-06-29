@@ -1,17 +1,15 @@
-import Image from "next/image";
+import { HeroImage } from "~/components/hero";
 import { Md } from "~/components/markdown";
 import { Badge } from "~/components/ui/badge";
+import { logo } from "~/lib/sprites/logo";
 
 export default function Page() {
   // prettier-ignore
   return (
 <>
-<Image
-src="/logo.png"
-width={140}
-height={140}
-alt="Pokemon Emerald Flow Logo"
-priority
+<HeroImage
+src={logo}
+alt="Logo sprite"
 />
 <Md>
 {

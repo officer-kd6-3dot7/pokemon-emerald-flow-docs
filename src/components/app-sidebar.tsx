@@ -16,6 +16,7 @@ import { menuItems } from "~/lib/menu-items";
 import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { MenuButton } from "./menu-button";
+import { logo } from "~/lib/sprites/logo";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -26,7 +27,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuButton size="lg" asChild>
               <Link href="/">
                 <div className="text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg border-2">
-                  <Image src="/logo.png" alt="Logo" width={32} height={32} />
+                  <Image src={logo} alt="Logo sprite" width={32} height={32} />
                 </div>
                 <div className="flex flex-col gap-1 leading-none">
                   <span className="font-medium">Pokemon Emerald Flow</span>
