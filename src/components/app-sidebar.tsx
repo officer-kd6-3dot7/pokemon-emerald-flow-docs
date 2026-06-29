@@ -10,6 +10,7 @@ import {
   SidebarMenuItem,
   SidebarMenuSub,
   SidebarMenuSubItem,
+  SidebarNoJS,
 } from "~/components/ui/sidebar";
 import Image from "next/image";
 import { menuItems } from "~/lib/menu-items";
@@ -20,7 +21,20 @@ import { logo } from "~/lib/sprites/logo";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar {...props}>
+    <>
+      <Sidebar {...props}>
+        <AppSidebarContent />
+      </Sidebar>
+      <SidebarNoJS>
+        <AppSidebarContent />
+      </SidebarNoJS>
+    </>
+  );
+}
+
+function AppSidebarContent() {
+  return (
+    <>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
@@ -71,6 +85,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-    </Sidebar>
+    </>
   );
 }

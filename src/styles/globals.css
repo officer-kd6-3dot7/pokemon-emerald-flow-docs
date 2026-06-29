@@ -142,3 +142,30 @@
 .non-sprite {
   image-rendering: auto;
 }
+
+.no-js .js-only {
+  display: none !important;
+}
+
+.js .no-js-only {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .no-js-sidebar {
+    display: none !important;
+  }
+  .no-js .sidebar-toggle {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .no-js .no-js-sidebar {
+    display: block;
+  }
+}
+
+.no-js dialog::backdrop {
+  @apply fixed inset-0 z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs;
+}

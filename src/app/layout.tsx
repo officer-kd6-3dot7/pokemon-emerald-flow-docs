@@ -32,14 +32,21 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(geist.variable, "font-sans", inter.variable)}
+      className={cn("no-js", geist.variable, "font-sans", inter.variable)}
       suppressHydrationWarning
     >
       <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              document.documentElement.classList.remove('no-js');
+              document.documentElement.classList.add('js');
+            `,
+          }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem
           disableTransitionOnChange
         >
           <TooltipProvider>
@@ -49,7 +56,8 @@ export default function RootLayout({
                 <header className="sticky top-0 z-10 flex h-16 items-center px-4">
                   <SidebarTrigger
                     variant="outline"
-                    className="dark:bg-sidebar/95"
+                    className="dark:bg-sidebar/95 sidebar-toggle"
+                    popoverTarget="no-js-sidebar"
                   />
                   <div className="ml-auto">
                     <ModeToggle />

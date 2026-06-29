@@ -250,6 +250,20 @@ function Sidebar({
   );
 }
 
+function SidebarNoJS({ children }: React.PropsWithChildren) {
+  return (
+    <dialog
+      id="no-js-sidebar"
+      popover="auto"
+      className="no-js-only no-js-sidebar fixed inset-y-0 left-0 m-0 h-svh w-(--sidebar-width) p-0"
+    >
+      <div className="bg-sidebar flex h-full flex-col overflow-y-auto">
+        {children}
+      </div>
+    </dialog>
+  );
+}
+
 function SidebarTrigger({
   className,
   onClick,
@@ -685,6 +699,7 @@ function SidebarMenuSubButton({
 
 export {
   Sidebar,
+  SidebarNoJS,
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
