@@ -1,10 +1,5 @@
 import "~/styles/globals.css";
 
-import { type Metadata } from "next";
-import { Geist, Inter } from "next/font/google";
-import { cn } from "~/lib/utils";
-import { TooltipProvider } from "~/components/ui/tooltip";
-import { ThemeProvider } from "~/components/theme-provider";
 import {
   SidebarInset,
   SidebarProvider,

@@ -7,7 +7,7 @@ import { repel } from "~/lib/generated/sprites/repel";
 import { pokeball } from "~/lib/generated/sprites/pokeball";
 
 export default function Page() {
-  const feature = features["1$-items"];
+  const feature = features["one$-items"];
   const img = repel;
   const alt = "Repel item sprite";
   // prettier-ignore
